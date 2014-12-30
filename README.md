@@ -1,4 +1,4 @@
 ducking-octo-avenger
 ====================
 
-programs made in Python from Computer Science classes
+This is my first repository on GitHub - these are programs made in Python from Computer Science classes
