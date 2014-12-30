@@ -1,0 +1,76 @@
+#Satyajeet Salvi
+#Calendar
+
+# a for-loop that prints the numbers 0 through 14
+for i in range(15):
+    print(i)
+
+# a for-loop that prints the numbers 27 through 35
+for i in range(27,36):
+    print(i)
+
+# a for-loop that prints the numbers 33, 39, 41, and 50
+for i in [33, 39, 41, 50]:
+    print(i)
+
+# a for-loop that computes the sum of 33, 39, 41, and 50
+sum = 0
+for i in [33, 39, 41, 50]:
+    sum = sum+i
+
+# a for-loop that prints "strawberry", "pineapple", "grapefruit",
+# and "blueberry"
+for word in ["strawberry", "pineapple", "grapefruit", "blueberry"]:
+    print(word)
+
+# a for-loop that prints the number of characters in "beautiful"
+numChar = 0
+for letter in "beautiful":
+    numChar += 1
+print(numChar)
+
+# nested for-loops that count the number of characters in "beautiful",
+# "wonderful", "terrific", "superb"
+numChar = 0
+for word in ["beautiful", "wonderful", "terrific", "superb"]:
+    for letter in word:
+        numChar += 1
+print(numChar)
+
+
+# The following will print the days of the year.
+
+# This is the original version of the function
+##def print_days(numDaysInMonth,month,year):
+##    for day in range(1,numDaysInMonth+1):
+##        print(month + " " + str(day) + ", " + str(year))
+
+
+# This one prints the dates as ordinal numbers
+def print_days(numDaysInMonth,month,year):
+    for day in range(1,numDaysInMonth+1):
+        if day == 1 or day == 21 or day == 31:
+            print(month + " " + str(day) + "st, " + str(year))
+        elif day == 2 or day == 22:
+            print(month + " " + str(day) + "nd, " + str(year))
+        elif day == 3 or day == 23:
+            print(month + " " + str(day) + "rd, " + str(year))
+        else:
+            print(month + " " + str(day) + "th, " + str(year))
+
+# Print all the days from January 1, 2010 through December 31, 2014
+for year in range(2010,2015):
+    for month in ["January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November",
+                  "December"]:
+        if month == "January" or month == "March" or month == "May" or \
+                    month == "July" or month == "August" or month == "October" \
+                    or month == "December":
+            numDays = 31
+        elif month == "February" and year == 2012:
+            numDays = 29
+        elif month == "February":
+            numDays = 28
+        else:
+            numDays = 30
+        print_days(numDays,month,year)
