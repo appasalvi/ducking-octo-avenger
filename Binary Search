@@ -1,0 +1,64 @@
+# binary search
+
+def get_fav_ice_cream():
+    print("Today's ice cream flavors are: chocolate, vanilla, strawberry," +
+          " and purple cow.")    
+    flavor = input("What's your favorite flavor?\n")
+    while flavor != "chocolate" and flavor != "vanilla" and \
+           flavor != "strawberry" and flavor != "purple cow":
+        print("Sorry, we're fresh out of that flavor")
+        flavor = input("Please try again (chocolate, vanilla, strawberry" +
+                    " or purple cow)\n")
+    if flavor == "purple cow":
+        print("What exactly is an eph anyway?")
+
+def greet_user():
+    print("Hello.")
+    fname = input("What's your first name?\n")
+    lname = input("What's your last name?\n")
+    full_name = fname + lname
+    print("Well hello, " + full_name)
+    get_fav_ice_cream()
+    return full_name
+    
+
+
+# This function takes an integer, x, as a parameter.
+# The function returns a character.  The character it returns is:
+# "Y" if number the User is thinking of is equal to x
+# "G" if the number the User is thinking of is greater than x
+# "L" if the number the User is thinking of is less than x
+def guess(x):
+    response = input("Is the number " + str(x) + "? Enter Y/N:\n")
+    if response == "Y":
+        print("YAY!  I got it!")
+        return response
+    else:
+        print("BOO... Ok, I'll keep trying.")
+        response = input("Is the number greater than or less than " +
+                         str(x) + "? Enter G/L:\n")
+        while response != "G" and response != "L":
+            print("Sorry, that isn't a valid response.")
+            response = input("Please try again.  Enter G/L:\n")
+        return response
+
+
+name = greet_user()
+
+print("Ok, " + name + ", let's play a game.  I will try to guess your number.")
+print("Think of a number between 1 and 100.")
+
+top = 100
+bottom = 1
+my_guess = 50
+r = guess(my_guess)
+while r != "Y":
+    if r == "G":
+        bottom = my_guess + 1
+        my_guess = int((top - bottom) / 2 + bottom)
+    else:
+        top = my_guess - 1
+        my_guess = int((top - bottom) / 2 + bottom)
+    r = guess(my_guess)
+
+print("Done")
