@@ -1,0 +1,69 @@
+#Satyajeet Salvi
+#Simple Calculator
+
+import math
+
+name = input("What is your name?\n")
+print("Hello, " + name)
+age = int(input("How old are you?\n"))
+if age % 2 == 0:
+    print("Your age is even!")
+else:
+    print("Your age is odd!")    
+happy = input("Are you happy today?\n")
+lunch = input("Did you have lunch yet?\n")
+
+# Simple calculator
+print("Let's do some math!\n")
+
+# Get the number of inputs from the user  -- valid values are only 1 or 2
+num_inputs = int(input("Would you like to provide 1 or 2 input variables?\n"))
+
+# Make sure the number of inputs is either 1 or 2
+if num_inputs != 1 and num_inputs != 2:
+    print("Sorry, that is not a valid number of inputs.\n")
+
+# Several math module and built-in functions are supported for 1 input variable
+elif num_inputs == 1:
+    x = float(input("What is the input variable?\n"))
+    function = input("Please choose a function: " +
+                     "ceiling, floor, logarithm, sqrt, sin, cos, tan, abs.\n")
+    if function == 'ceiling':
+        print(math.ceil(x))
+    elif function == 'floor':
+        print(math.floor(x))
+    elif function == 'logarithm':
+        print(math.log(x))
+    elif function == 'sqrt':
+        print(math.sqrt(x))
+    elif function == 'sin':
+        print(math.sin(x))
+    elif function == 'cos':
+        print(math.cos(x))
+    elif function == 'tan':
+        print(math.tan(x))
+    elif function == 'abs':
+        if x < 0:
+            print(-1.0 * x)
+        else:
+            print(x)
+    else:
+        print("Sorry, that is not a valid function.\n")
+
+# Use math operands to compute functions for 2 input variables
+elif num_inputs == 2:
+    x = float(input("What is the first input variable?\n"))
+    y = float(input("What is the second input variable?\n"))
+    function = input("Please choose a function: " +
+                     "addition, subtraction, multiplication, division.\n")
+
+    if function == 'addition':
+        print(x + y)
+    elif function == 'subtraction':
+        print(x - y)
+    elif function == 'multiplication':
+        print(x * y)
+    elif function == 'division':
+        print(x / y)
+    else:
+        print("Sorry, that is not a valid function.\n")
