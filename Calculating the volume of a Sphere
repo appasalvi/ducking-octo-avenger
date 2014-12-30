@@ -1,0 +1,5 @@
+#simple calculator: Calculating the volume of a sphere
+pi = 3.14159
+radius = 6.7
+volume = (4/3)*pi*radius**3
+print(volume)
