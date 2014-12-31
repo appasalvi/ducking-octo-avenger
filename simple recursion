@@ -1,0 +1,88 @@
+#Satyajeet Salvi
+#simple recursion program
+
+# This recursive function prints a triangle
+# of asterisks, with n rows and n asterisks
+# across the top row
+def triangleDown(n):
+    if n == 1: # Base Case
+        print("*")
+    else:
+        print("*"*n)
+        triangleDown(n-1)
+
+triangleDown(5)
+
+# This recursive function prints a triangle
+# of asterisks, with n rows and n asterisks
+# across the bottom row
+def triangleUp(n):
+    if n == 1: # Base Case
+        print("*")
+    else:
+        triangleUp(n-1)
+        print("*"*n)
+
+
+triangleUp(5)
+
+# This recursive function prints n a's
+# followed by n b's
+def aabb(n):
+    if n == 1: # Base Case
+        print("ab",end="")
+    else:
+        print("a",end="")
+        aabb(n-1)
+        print("b",end="")
+
+aabb(4)
+print()
+
+# This recursive function returns the nth
+# Fibonacci number
+def fib(n):
+    if n == 1:  # Base Case
+        return 0
+    if n == 2: # Base Case
+        return 1
+    return fib(n-1) + fib(n-2)
+
+
+print("The", 10, "th Fibonacci number is:",fib(10))
+
+# This function takes an integer, x, as a parameter.
+# The function returns a character.  The character it returns is:
+# "Y" if number the User is thinking of is equal to x
+# "G" if the number the User is thinking of is greater than x
+# "L" if the number the User is thinking of is less than x
+def guess(x):
+    response = input("Is the number " + str(x) + "? Enter Y/N:\n")
+    if response == "Y":
+        print("YAY!  I got it!")
+        return response
+    else:
+        print("BOO... Ok, I'll keep trying.")
+        response = input("Is the number greater than or less than " +
+                         str(x) + "? Enter G/L:\n")
+        while response != "G" and response != "L":
+            print("Sorry, that isn't a valid response.")
+            response = input("Please try again.  Enter G/L:\n")
+        return response
+
+# This recursive function implements a binary search
+# in order to guess the User's secret number which is
+# in the range between bottom and top
+def binarySearch(bottom,top):
+    if bottom == top: # Base Case
+        return bottom
+    mid = int((bottom + top) / 2)
+    r = guess(mid)
+    if r == "Y":
+        return mid
+    elif r == "G":
+        return binarySearch(mid+1,top)
+    else:
+        return binarySearch(bottom,mid-1)
+
+print("Your secret number is",binarySearch(1,100))
