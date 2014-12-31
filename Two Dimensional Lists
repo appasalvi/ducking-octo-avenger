@@ -1,0 +1,77 @@
+#Satyajeet Salvi
+#Two-Dimensional & Lists
+
+def makeGrid(n):
+    l = list()
+    for i in range(n):
+        l.append([])
+        l[i] = list()
+        for j in range(n):
+            l[i].append(0)
+    return l
+
+def printGrid(l):
+    for i in range(len(l)):
+        print(l[i])
+
+l = makeGrid(4)
+printGrid(l)
+
+
+def allDifferent1D(l):
+    for e in l:
+        if e != 0:
+            if l.count(e) > 1:
+                return False
+    return True
+
+def allDifferent2D(l):
+    for row in l:
+        if not allDifferent1D(row):
+            return False
+    for c in range(len(l)):
+        col = []
+        for r in range(len(l)):
+            col.append(l[r][c])
+        if not allDifferent1D(col):
+            return False
+    return True
+
+
+
+            
+# This function enumerates all ordered triplets of 3 nonnegative
+# digits, calculates how much they sum to, computes the most frequent
+# sum value, and then returns that value along with a list of
+# all the triplets whose members sum to that value.s
+def exploreTriplets():
+    # Create dictionary mapping triplets to their sums
+    d = dict()
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                d[(i,j,k)] = i + j + k
+    # Create dictionary mapping sums of triplets to their
+    # frequencies (as values) in d
+    freq = dict()
+    for i in d:
+        v = d[i]
+        count = freq.get(v,0)
+        freq[v] = count + 1
+    maxFreq = 0 # maximum frequency (value) in freq
+    mostFreqSum = 0 # sum (key) with the highest frequency in freq
+    for i in freq:
+        if freq[i] > maxFreq:
+            maxFreq = freq[i]
+            mostFreqSum = i
+    # Create a list to store all the triplets whose
+    # sum is equal to mostFreqSum
+    l = []
+    for i in d:
+        if d[i] == mostFreqSum:
+            l.append(i)
+    return (mostFreqSum,l)
+
+maxVal,l = exploreTriplets()
+print("The most frequent sum is",maxVal)
+print("The ordered pairs that exhibit it are:",l)
