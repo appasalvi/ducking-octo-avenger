@@ -1,0 +1,90 @@
+# Satyajeet Salvi
+#simple dictionary
+
+
+# This function takes 2 sorted lists
+# and returns a single sorted list with
+# all the elements.
+def merge(l,r):
+    combined = []
+    i = 0
+    j = 0
+    while i < len(l) and j < len(r):
+        if l[i] < r[j]:
+            combined.append(l[i])
+            i += 1
+        else:
+            combined.append(r[j])
+            j += 1
+    if i < len(l):
+        combined.extend(l[i:])
+    elif j < len(r):
+        combined.extend(r[j:])
+    return combined
+
+# This function implements mergesort
+# recursively.
+def mergesort(list):
+    if len(list) == 1:
+        return list
+    else:
+        midpoint = int(len(list)/2)
+        l = mergesort(list[:midpoint])
+        r = mergesort(list[midpoint:])
+        result = merge(l,r)
+        return result
+
+
+    
+# Counts the num times each character appears in string s, and
+# returns a dictionary of {Character : count} key-value pairs
+def countChars(s):
+    d = dict()
+    for c in s:
+        count = d.get(c,0)  # count = d[c]
+        d[c] = count + 1
+    return d
+
+
+# Create a dictionary containing the counts for
+# each character in the string s
+s = "I feel the need, the need for speed!"
+d = countChars(s)
+print(d)
+
+
+def printSorted(d):
+    k = list(d.keys())
+    # Sort the list of keys
+    k = mergesort(k)
+    # Print the key-value pairs in sorted order
+    for key in k:
+        print(key, ":", d[key])
+
+# Print the contents of d in sorted order w.r.t. the keys
+printSorted(d)
+
+# Constructs a dictionary that maps letters to letters
+# that are shift indices to the right
+def createSubstitution(shift):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    sub = dict()
+    for index in range(len(alphabet)):
+        sub[alphabet[index]] = alphabet[(index+shift)%26]
+    return sub
+
+sub = createSubstitution(7)
+
+encrypted = "max jnxlmbhg hy paxmaxk t vhfinmxk vtg mabgd bl gh fhkx bgmxkxlmbgz matg max jnxlmbhg hy paxmaxk t lnuftkbgx vtg lpbf"
+
+def decrypt(encrypted,sub):
+    r = ""
+    for letter in encrypted:
+        if letter != " ":
+            r += sub[letter]
+        else:
+            r += " "
+    return r
+
+print("Encrypted is", encrypted)
+print("Decrypted is", decrypt(encrypted,sub))
